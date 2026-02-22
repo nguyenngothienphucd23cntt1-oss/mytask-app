@@ -7,6 +7,10 @@ app.use(express.json());
 
 let tasks = [];
 
+app.get("/", (req, res) => {
+    res.send("Server is running 🚀");
+});
+
 // Lấy danh sách task
 app.get("/tasks", (req, res) => {
     res.json(tasks);

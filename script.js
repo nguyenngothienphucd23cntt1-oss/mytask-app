@@ -2,7 +2,7 @@ const addBtn = document.getElementById("addBtn");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
-const API_URL = "https://mytask-app-letq.onrender.com/tasks";
+const API_URL = "https://mytask-app-1.onrender.com/tasks";
 
 async function fetchTasks() {
     const res = await fetch(API_URL);

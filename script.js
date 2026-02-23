@@ -1,6 +1,6 @@
 const addBtn = document.getElementById("addBtn");
 const taskInput = document.getElementById("taskInput");
-const taskList = document.getElementById("taskList");
+const tableBody = document.querySelector("#taskTable tbody");
 
 const API_URL = "https://mytask-app-1.onrender.com/tasks";
 
@@ -11,22 +11,24 @@ async function fetchTasks() {
 }
 
 function renderTasks(tasks) {
-    taskList.innerHTML = "";
+    tableBody.innerHTML = "";
 
     tasks.forEach(task => {
-        const li = document.createElement("li");
+        const row = document.createElement("tr");
 
-        li.innerHTML = `
-            <span class="${task.completed ? 'completed' : ''}">
+        row.innerHTML = `
+            <td>${task.id}</td>
+            <td class="${task.completed ? 'completed' : ''}">
                 ${task.text}
-            </span>
-            <div>
-                <button onclick="toggleTask(${task.id})">✔</button>
-                <button onclick="deleteTask(${task.id})">❌</button>
-            </div>
+            </td>
+            <td>${task.completed ? "✔" : "❌"}</td>
+            <td>
+                <button onclick="toggleTask(${task.id})">Toggle</button>
+                <button onclick="deleteTask(${task.id})">Xóa</button>
+            </td>
         `;
 
-        taskList.appendChild(li);
+        tableBody.appendChild(row);
     });
 }
 
